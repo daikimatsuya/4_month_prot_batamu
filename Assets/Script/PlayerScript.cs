@@ -11,7 +11,11 @@ public class PlayerScript : MonoBehaviour
     public float xMovePower;
     public float jumpPower;
     public float gravityPower;
-    public float reverseTime;
+    public float reversePowerX;
+    public float reversePowerY;
+    public float reverseBlake;
+    public float reverseTimeOnStep;
+    public float reverseTimeInAir;
 
 
     private bool isRight;
@@ -19,13 +23,15 @@ public class PlayerScript : MonoBehaviour
     private bool isCanJump;
     private bool isReverse;
     private float xMoveVector;
-    private float reverseSpeed;
+    private float reverseSpeedX;
+    private float reverseSpeedY;
     private int reverseCount;
     private void PlayerController()
     {
         Jump();
         Move();
         ImageChange();
+        ReverseCountDown();
     }
     private void Move()
     {
@@ -46,7 +52,11 @@ public class PlayerScript : MonoBehaviour
                 Reverse();
             }
         }
-        rb.velocity = new Vector2(xMoveVector+reverseSpeed, rb.velocity.y);
+        if(reverseCount>0)
+        {
+            xMoveVector = 0;
+        }
+        rb.velocity = new Vector2(xMoveVector+reverseSpeedX, rb.velocity.y);
     }
     private void Jump()
     {
@@ -55,33 +65,90 @@ public class PlayerScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                isCanJump = false;
             }
-            isCanJump = false;
+            
         }
         }
     private void Reverse()
     {
         if (reverseCount <= 0)
         {
-            if (isRight)
+            if(isCanJump)
             {
-                ReverseCountReset();
-                isRight = false;
-            }
-            else
+                if (isRight)
+                {
+                    Attack();
+                    ReverseCountReset(reverseTimeOnStep);
+                    isRight = false;
+                }
+                else
+                {
+                    Attack();
+                    ReverseCountReset(reverseTimeOnStep);
+                    isRight = true;
+                }
+            }//ê⁄ín
+            if(!isCanJump)
             {
-                ReverseCountReset();
-                isRight = true;
-            }
+                //ç∂Ç…å¸Ç≠
+                if (isRight)
+                {
+                    ReverseReaction(-1);
+                    ReverseCountReset(reverseTimeInAir);
+                    isRight = false;
+                }
+                //âEÇ…å¸Ç≠
+                else
+                {
+                    ReverseReaction(1);
+                    ReverseCountReset(reverseTimeInAir);
+                    isRight = true;
+                }
+            }//ãÛíÜ
+           
         }
-        if(reverseCount > 0)
+      
+    }
+    private void Attack()
+    {
+
+    }
+    private void ReverseCountDown()
+    {
+        if (reverseCount > 0)
         {
             reverseCount--;
         }
     }
-    private void ReverseCountReset()
+    private void ReverseReaction(int direction)
     {
-        reverseCount = (int)(reverseTime * 60);
+        reverseSpeedX = reversePowerX * direction;
+        rb.velocity = new Vector2(rb.velocity.x, reversePowerY);
+
+    }
+    private void ReverseReactionBlake()
+    {
+        if(reverseSpeedX > 0)
+        {
+            reverseSpeedX -= reverseBlake;
+            if(reverseSpeedX < 0)
+            {
+                reverseSpeedX = 0;
+            }
+        }
+        if(reverseSpeedX < 0)
+        {
+            reverseSpeedX += reverseBlake;
+            if(reverseSpeedX > 0)
+            {
+                reverseSpeedX = 0;
+            }
+        }
+    }
+    private void ReverseCountReset(float time)
+    {
+        reverseCount = (int)(time * 60);
     }
     private void ImageChange()
     {
@@ -108,6 +175,11 @@ public class PlayerScript : MonoBehaviour
                 isCanJump=true;
             }
         }//ê⁄ínîªíË
+        reverseSpeedX = 0;
+    }
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        isCanJump = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -115,12 +187,14 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         tf = GetComponent<RectTransform>();
         isRight = true;
-        reverseSpeed = 0;
+        reverseSpeedX = 0;
+        reverseCount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+     
         Physics2D.gravity = new Vector2(0, -9.8f * gravityPower);
         PlayerController();
     }
