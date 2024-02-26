@@ -1,40 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D rb;
+    RectTransform tf;
 
     public float xMovePower;
     public float jumpPower;
     public float gravityPower;
-    public int reverseTime;
+    public float reverseTime;
 
 
     private bool isRight;
     private bool onStep;
     private bool isCanJump;
-    private float reverseCount;
+    private bool isReverse;
+    private float xMoveVector;
+    private float reverseSpeed;
+    private int reverseCount;
     private void PlayerController()
     {
         Jump();
         Move();
+        ImageChange();
     }
     private void Move()
     {
-        float xMoveVector = 0;
+        xMoveVector = 0;
         if (Input.GetKey(KeyCode.D)||Input.GetKey(KeyCode.RightArrow))
-        {
-            Reverse();
+        {          
             xMoveVector += xMovePower;
+            if (!isRight)
+            {
+                Reverse();
+            }           
         }
         if (Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.LeftArrow))
-        {
-            Reverse();
+        {            
             xMoveVector += -xMovePower;
+            if (isRight)
+            {
+                Reverse();
+            }
         }
-        rb.velocity = new Vector2(xMoveVector, rb.velocity.y);
+        rb.velocity = new Vector2(xMoveVector+reverseSpeed, rb.velocity.y);
     }
     private void Jump()
     {
@@ -47,18 +59,18 @@ public class PlayerScript : MonoBehaviour
             isCanJump = false;
         }
         }
-        private void Reverse()
+    private void Reverse()
     {
-        if (reverseCount < 0)
+        if (reverseCount <= 0)
         {
             if (isRight)
             {
-
+                ReverseCountReset();
                 isRight = false;
             }
             else
             {
-
+                ReverseCountReset();
                 isRight = true;
             }
         }
@@ -66,6 +78,22 @@ public class PlayerScript : MonoBehaviour
         {
             reverseCount--;
         }
+    }
+    private void ReverseCountReset()
+    {
+        reverseCount = (int)(reverseTime * 60);
+    }
+    private void ImageChange()
+    {
+        if(isRight)
+        {
+            tf.transform.eulerAngles = new Vector3(0, 0,0);
+        }
+        else
+        {
+            tf.transform.eulerAngles = new Vector3(0, 180, 0); 
+        }
+
     }
     public void OnCollisionStay2D(Collision2D collision)
     {
@@ -79,12 +107,15 @@ public class PlayerScript : MonoBehaviour
             {
                 isCanJump=true;
             }
-        }
+        }//Ú’n”»’è
     }
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();  
+        rb = GetComponent<Rigidbody2D>();
+        tf = GetComponent<RectTransform>();
+        isRight = true;
+        reverseSpeed = 0;
     }
 
     // Update is called once per frame
