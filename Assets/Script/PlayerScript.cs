@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
+    public GameObject attack;
     Rigidbody2D rb;
     RectTransform tf;
+    private GameObject canvas;
 
     public float xMovePower;
     public float jumpPower;
@@ -16,7 +18,7 @@ public class PlayerScript : MonoBehaviour
     public float reverseBlake;
     public float reverseTimeOnStep;
     public float reverseTimeInAir;
-
+    public float attackDistance;
 
     private bool isRight;
     private bool onStep;
@@ -26,6 +28,7 @@ public class PlayerScript : MonoBehaviour
     private float reverseSpeedX;
     private float reverseSpeedY;
     private int reverseCount;
+    
     private void PlayerController()
     {
         Jump();
@@ -76,12 +79,14 @@ public class PlayerScript : MonoBehaviour
         {
             if(isCanJump)
             {
+                //ç∂Çå¸Ç≠
                 if (isRight)
                 {
                     Attack();
                     ReverseCountReset(reverseTimeOnStep);
                     isRight = false;
                 }
+                //âEÇå¸Ç≠
                 else
                 {
                     Attack();
@@ -112,6 +117,22 @@ public class PlayerScript : MonoBehaviour
     }
     private void Attack()
     {
+        //ç∂Çå¸Ç≠Ç∆Ç´ÇÃçUåÇ
+        if(isRight)
+        {
+            GameObject _ = Instantiate(attack, new Vector3(tf.position.x, tf.position.y + attackDistance, tf.position.z), Quaternion.identity);
+            _.transform.SetParent(canvas.transform);
+            _.transform.localEulerAngles = new Vector2(0, 180);
+            _.transform.localScale = new Vector2(1, 1);
+        }
+        //âEÇå¸Ç≠Ç∆Ç´ÇÃçUåÇ
+        else
+        {
+           GameObject _ = Instantiate(attack, new Vector3(tf.position.x, tf.position.y - attackDistance, tf.position.z), Quaternion.identity);
+            _.transform.SetParent(canvas.transform);
+            _.transform.localEulerAngles = new Vector2(0, 0);
+            _.transform.localScale = new Vector2(1, 1);
+        }
 
     }
     private void ReverseCountDown()
@@ -162,6 +183,10 @@ public class PlayerScript : MonoBehaviour
         }
 
     }
+    public float GetAttackFreezeTime()
+    {
+        return reverseTimeOnStep;
+    }
     public void OnCollisionStay2D(Collision2D collision)
     {
         {
@@ -184,6 +209,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canvas = GameObject.FindWithTag("Canvas");
         rb = GetComponent<Rigidbody2D>();
         tf = GetComponent<RectTransform>();
         isRight = true;

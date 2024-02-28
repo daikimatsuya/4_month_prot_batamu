@@ -866,7 +866,7 @@ GameObject:
   - component: {fileID: 1269927654}
   m_Layer: 0
   m_Name: GameCanvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -994,11 +994,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4514594430590225548, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4514594430590225548, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4514594430590225548, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4514594430590225548, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4514594430590225548, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1055,22 +1063,6 @@ PrefabInstance:
     - target: {fileID: 4514594430590225551, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
       propertyPath: reversePower
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4514594430590225551, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
-      propertyPath: reversePowerX
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4514594430590225551, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
-      propertyPath: reversePowerY
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4514594430590225551, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
-      propertyPath: reverseTimeInAir
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4514594430590225551, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
-      propertyPath: reverseTimeOnStep
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
