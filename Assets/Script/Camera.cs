@@ -18,7 +18,7 @@ public class Camera : MonoBehaviour
         tf.position = new Vector3(playerpos.position.x, tf.position.y, tf.position.z);
 
         if (playerpos.position.y - tf.position.y > 7){
-            tf.position = new Vector3(tf.position.x, tf.position.y + 1.1f , tf.position.z);
+            tf.position = new Vector3(tf.position.x, tf.position.y + 0.7f , tf.position.z);
         }
         else if (playerpos.position.y - tf.position.y > cameraposDiff + 2)
         {
@@ -32,7 +32,7 @@ public class Camera : MonoBehaviour
 
         if (playerpos.position.y - tf.position.y < -7)
         {
-            tf.position = new Vector3(tf.position.x, tf.position.y - 1.1f, tf.position.z);
+            tf.position = new Vector3(tf.position.x, tf.position.y - 0.7f, tf.position.z);
         }
         else if (playerpos.position.y-tf.position.y < -cameraposDiff-2 )
         {
