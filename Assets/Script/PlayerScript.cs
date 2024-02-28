@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour
     public float reverseTimeOnStep;
     public float reverseTimeInAir;
     public float attackDistance;
+    public int hp;
 
     private bool isRight;
     private bool onStep;
@@ -135,6 +136,14 @@ public class PlayerScript : MonoBehaviour
         }
 
     }
+    private void HitDamage()
+    {
+        hp--;
+        if (hp <= 0)
+        {
+
+        }
+    }
     private void ReverseCountDown()
     {
         if (reverseCount > 0)
@@ -205,6 +214,13 @@ public class PlayerScript : MonoBehaviour
     public void OnCollisionExit2D(Collision2D collision)
     {
         isCanJump = false;
+    }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            HitDamage();
+        }
     }
     // Start is called before the first frame update
     void Start()

@@ -148,3 +148,4 @@ MonoBehaviour:
   reverseTimeOnStep: 0
   reverseTimeInAir: 0.4
   attackDistance: 0.5
+  hp: 3
