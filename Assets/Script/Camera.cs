@@ -17,30 +17,34 @@ public class Camera : MonoBehaviour
     {
         tf.position = new Vector3(playerpos.position.x, tf.position.y, tf.position.z);
 
-        if (playerpos.position.y - tf.position.y > 7){
-            tf.position = new Vector3(tf.position.x, tf.position.y + 0.7f , tf.position.z);
-        }
-        else if (playerpos.position.y - tf.position.y > cameraposDiff + 2)
+        //cˆÚ“®
         {
-            tf.position = new Vector3(tf.position.x, tf.position.y + 0.2f, tf.position.z);
-        }
-        else if (playerpos.position.y - tf.position.y > cameraposDiff)
-        {
-            tf.position = new Vector3(tf.position.x, tf.position.y + 0.04f, tf.position.z);
-        }
+            if (playerpos.position.y - tf.position.y > 7)
+            {
+                tf.position = new Vector3(tf.position.x, tf.position.y + 0.7f, tf.position.z);
+            }
+            else if (playerpos.position.y - tf.position.y > cameraposDiff + 2)
+            {
+                tf.position = new Vector3(tf.position.x, tf.position.y + 0.2f, tf.position.z);
+            }
+            else if (playerpos.position.y - tf.position.y > cameraposDiff)
+            {
+                tf.position = new Vector3(tf.position.x, tf.position.y + 0.04f, tf.position.z);
+            }
 
 
-        if (playerpos.position.y - tf.position.y < -7)
-        {
-            tf.position = new Vector3(tf.position.x, tf.position.y - 0.7f, tf.position.z);
-        }
-        else if (playerpos.position.y-tf.position.y < -cameraposDiff-2 )
-        {
-            tf.position = new Vector3(tf.position.x, tf.position.y - 0.2f, tf.position.z);
-        }
-        else if (playerpos.position.y - tf.position.y < -cameraposDiff)
-        {
-            tf.position = new Vector3(tf.position.x, tf.position.y - 0.04f, tf.position.z);
+            if (playerpos.position.y - tf.position.y < -7)
+            {
+                tf.position = new Vector3(tf.position.x, tf.position.y - 0.7f, tf.position.z);
+            }
+            else if (playerpos.position.y - tf.position.y < -cameraposDiff - 2)
+            {
+                tf.position = new Vector3(tf.position.x, tf.position.y - 0.2f, tf.position.z);
+            }
+            else if (playerpos.position.y - tf.position.y < -cameraposDiff)
+            {
+                tf.position = new Vector3(tf.position.x, tf.position.y - 0.04f, tf.position.z);
+            }
         }
     }
     // Start is called before the first frame update
