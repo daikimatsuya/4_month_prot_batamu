@@ -20,6 +20,7 @@ public class PlayerScript : MonoBehaviour
     public float reverseTimeInAir;
     public float attackDistance;
     public int hp;
+    public float maxFallSpeed;
 
     private bool isRight;
     private bool onStep;
@@ -61,6 +62,11 @@ public class PlayerScript : MonoBehaviour
             xMoveVector = 0;
         }
         rb.velocity = new Vector2(xMoveVector+reverseSpeedX, rb.velocity.y);
+
+        if (rb.velocity.y < maxFallSpeed)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, maxFallSpeed);
+        }
     }
     private void Jump()
     {
