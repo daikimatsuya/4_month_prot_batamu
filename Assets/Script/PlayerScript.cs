@@ -120,7 +120,7 @@ public class PlayerScript : MonoBehaviour
         //¶‚ğŒü‚­‚Æ‚«‚ÌUŒ‚
         if(isRight)
         {
-            GameObject _ = Instantiate(attack, new Vector3(tf.position.x, tf.position.y + attackDistance, tf.position.z), Quaternion.identity);
+            GameObject _ = Instantiate(attack, new Vector3(tf.position.x + attackDistance, tf.position.y, tf.position.z), Quaternion.identity);
             _.transform.SetParent(canvas.transform);
             _.transform.localEulerAngles = new Vector2(0, 180);
             _.transform.localScale = new Vector2(1, 1);
@@ -128,7 +128,7 @@ public class PlayerScript : MonoBehaviour
         //‰E‚ğŒü‚­‚Æ‚«‚ÌUŒ‚
         else
         {
-           GameObject _ = Instantiate(attack, new Vector3(tf.position.x, tf.position.y - attackDistance, tf.position.z), Quaternion.identity);
+           GameObject _ = Instantiate(attack, new Vector3(tf.position.x - attackDistance, tf.position.y, tf.position.z), Quaternion.identity);
             _.transform.SetParent(canvas.transform);
             _.transform.localEulerAngles = new Vector2(0, 0);
             _.transform.localScale = new Vector2(1, 1);

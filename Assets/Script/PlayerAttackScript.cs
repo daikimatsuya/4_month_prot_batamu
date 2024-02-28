@@ -9,7 +9,7 @@ public class PlayerAttackScript : MonoBehaviour
 
     private void PlayerAttackController()
     {
-
+        CountDown();
     }
     private void CountDown()
     {
@@ -28,11 +28,12 @@ public class PlayerAttackScript : MonoBehaviour
     {
         playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerScript>();
         count = playerScript.GetAttackFreezeTime() * 60;
+        count += 2;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        PlayerAttackController();
     }
 }
