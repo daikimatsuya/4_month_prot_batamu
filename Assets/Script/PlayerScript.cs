@@ -106,6 +106,7 @@ public class PlayerScript : MonoBehaviour
                 //ç∂Ç…å¸Ç≠
                 if (isRight)
                 {
+                    Attack();
                     ReverseReaction(-1);
                     ReverseCountReset(reverseTimeInAir);
                     isRight = false;
@@ -113,6 +114,7 @@ public class PlayerScript : MonoBehaviour
                 //âEÇ…å¸Ç≠
                 else
                 {
+                    Attack();
                     ReverseReaction(1);
                     ReverseCountReset(reverseTimeInAir);
                     isRight = true;
