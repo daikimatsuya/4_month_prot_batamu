@@ -5,18 +5,28 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     Rigidbody2D rb;
-
-    public int hp;
-    public float moveSpeed;
     
+    [SerializeField] private int hp;
+    [SerializeField] private float moveSpeed;
+    //public Camera cam;
+    private const string cam="MainCamera";
+
+    private bool canMove;
+
     private void EnemyController()
     {
         Move();
+
     }
     private void Move()
     {
-        rb.velocity = new Vector3(moveSpeed, rb.velocity.y, 0);
+        if (canMove)
+        {
+            rb.velocity = new Vector3(moveSpeed, rb.velocity.y, 0);
+        }
     }
+
+   
     private void HitDamage()
     {
         hp--;
@@ -31,6 +41,7 @@ public class EnemyScript : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        //壁判定チェック
         {
             ContactPoint2D[] contacts = collision.contacts;
             Vector2 otherNormal = contacts[0].normal;
@@ -43,6 +54,7 @@ public class EnemyScript : MonoBehaviour
             }
         }
     }
+    
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "PlayerAttack")
@@ -50,11 +62,26 @@ public class EnemyScript : MonoBehaviour
             HitDamage();
         }
     }
+
+    
+    private void OnWillRenderObject()
+    {
+        if (!canMove)
+        {
+            //カメラに映ったら動く
+            if (Camera.current.tag == "MainCamera")
+            {
+                canMove = true;
+            }
+            
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-        rb= GetComponent<Rigidbody2D>();    
-
+        rb= GetComponent<Rigidbody2D>();
+        //cam=GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        canMove = false;
     }
 
     // Update is called once per frame
@@ -62,4 +89,6 @@ public class EnemyScript : MonoBehaviour
     {
         EnemyController();
     }
+
+
 }

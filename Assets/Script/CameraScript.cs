@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class CameraScript : MonoBehaviour
 {
     Transform tf;
     private RectTransform playerpos;
@@ -13,6 +12,7 @@ public class Camera : MonoBehaviour
     {
         Move();
     }
+
     private void Move()
     {
         tf.position = new Vector3(playerpos.position.x, tf.position.y, tf.position.z);
@@ -47,6 +47,7 @@ public class Camera : MonoBehaviour
             }
         }
     }
+
     // Start is called before the first frame update
     void Start()
     {
