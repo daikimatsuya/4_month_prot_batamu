@@ -10,17 +10,18 @@ public class PlayerScript : MonoBehaviour
     RectTransform tf;
     private GameObject canvas;
 
-    public float xMovePower;
-    public float jumpPower;
-    public float gravityPower;
-    public float reversePowerX;
-    public float reversePowerY;
-    public float reverseBlake;
-    public float reverseTimeOnStep;
-    public float reverseTimeInAir;
-    public float attackDistance;
-    public int hp;
-    public float maxFallSpeed;
+    [SerializeField] private float xMovePower;
+    [SerializeField] private float jumpPower;
+    [SerializeField] private float gravityPower;
+    [SerializeField] private float reversePowerX;
+    [SerializeField] private float reversePowerY;
+    [SerializeField] private float reverseBlake;
+    [SerializeField] private float reverseTimeOnStep;
+    [SerializeField] private float reverseTimeInAir;
+    [SerializeField] private float attackDistance;
+    [SerializeField] private int hp;
+    [SerializeField] private float maxFallSpeed;
+    [SerializeField] private float invincibleTime;
 
     private bool isRight;
     private bool onStep;
@@ -30,6 +31,8 @@ public class PlayerScript : MonoBehaviour
     private float reverseSpeedX;
     private float reverseSpeedY;
     private int reverseCount;
+    private bool isDamage;
+    private int invincibleCount;
     
     private void PlayerController()
     {
@@ -146,11 +149,22 @@ public class PlayerScript : MonoBehaviour
     }
     private void HitDamage()
     {
+        isDamage = true;
         hp--;
+        invincibleCount = (int)(invincibleTime*60);
         if (hp <= 0)
         {
 
         }
+    }
+    private void InvincibleCountDown()
+    {
+        if(invincibleCount<=0)
+        {
+            isDamage= false;
+        }
+        invincibleCount--;
+
     }
     private void ReverseCountDown()
     {
@@ -227,7 +241,22 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            HitDamage();
+            if (!isDamage)
+            {
+                HitDamage();
+            }
+            
+        }
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Spike")
+        {
+            if (!isDamage)
+            {
+               HitDamage();               
+            }
+            
         }
     }
     // Start is called before the first frame update
@@ -239,6 +268,7 @@ public class PlayerScript : MonoBehaviour
         isRight = true;
         reverseSpeedX = 0;
         reverseCount = 0;
+        isDamage = false;
     }
 
     // Update is called once per frame
