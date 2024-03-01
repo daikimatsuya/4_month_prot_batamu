@@ -8,6 +8,7 @@ TagManager:
   - Canvas
   - Enemy
   - Item
+  - Spike
   layers:
   - Default
   - TransparentFX

@@ -40,6 +40,7 @@ public class PlayerScript : MonoBehaviour
         Move();
         ImageChange();
         ReverseCountDown();
+        InvincibleCountDown();
     }
     private void Move()
     {
