@@ -243,10 +243,28 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            if (!isDamage)
             {
-                HitDamage();
-            }
+                ContactPoint2D[] contacts = collision.contacts;
+                Vector2 otherNormal = contacts[0].normal;
+                Vector2 upVector = new Vector2(0, 1);
+                float dotUN = Vector2.Dot(upVector, otherNormal);
+                float dotDeg = Mathf.Acos(dotUN) * Mathf.Rad2Deg;
+               
+                    if(dotDeg <= 100)
+                    {
+                    if(dotDeg >= 45)
+                    {
+                        if (!isDamage)
+                        {
+                            HitDamage();
+                        }
+                    }
+                        
+                    }
+                    
+                
+            }//ê⁄ínîªíË
+          
             
         }
     }
