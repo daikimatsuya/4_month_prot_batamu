@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Item
   - Spike
+  - GoalItem
   layers:
   - Default
   - TransparentFX
