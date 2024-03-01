@@ -14,6 +14,10 @@ public class Item : MonoBehaviour
         {
 
         }
+        if (this.tag == "GoalItem")
+        {
+
+        }
         Destroy(this.gameObject);
     }
     public void OnTriggerEnter2D(Collider2D collision)
