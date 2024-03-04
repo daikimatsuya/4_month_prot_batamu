@@ -49,17 +49,23 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.D)||Input.GetKey(KeyCode.RightArrow))
         {          
             xMoveVector += xMovePower;
-            if (!isRight)
+            if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
             {
-                Reverse();
-            }           
+                if (!isRight)
+                {
+                    Reverse();
+                }
+            }
         }
         if (Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.LeftArrow))
         {            
             xMoveVector += -xMovePower;
-            if (isRight)
+            if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
             {
-                Reverse();
+                if (isRight)
+                {
+                    Reverse();
+                }
             }
         }
         if(reverseCount>0)
