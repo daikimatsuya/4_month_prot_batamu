@@ -150,4 +150,4 @@ MonoBehaviour:
   attackDistance: 0.5
   hp: 3
   maxFallSpeed: 0
-  invincibleTime: 0.5
+  invincibleTime: 1

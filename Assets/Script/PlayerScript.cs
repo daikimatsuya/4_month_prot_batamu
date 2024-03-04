@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D rb;
     RectTransform tf;
     private GameObject canvas;
+    private GameManagerScript gameManeger;
 
     [SerializeField] private float xMovePower;
     [SerializeField] private float jumpPower;
@@ -48,17 +49,23 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.D)||Input.GetKey(KeyCode.RightArrow))
         {          
             xMoveVector += xMovePower;
-            if (!isRight)
+            if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
             {
-                Reverse();
-            }           
+                if (!isRight)
+                {
+                    Reverse();
+                }
+            }
         }
         if (Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.LeftArrow))
         {            
             xMoveVector += -xMovePower;
-            if (isRight)
+            if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
             {
-                Reverse();
+                if (isRight)
+                {
+                    Reverse();
+                }
             }
         }
         if(reverseCount>0)
@@ -153,6 +160,7 @@ public class PlayerScript : MonoBehaviour
         isDamage = true;
         hp--;
         invincibleCount = (int)(invincibleTime*60);
+        gameManeger.SendPlayerHp(hp);
         if (hp <= 0)
         {
 
@@ -231,9 +239,10 @@ public class PlayerScript : MonoBehaviour
             if (dotDeg <= 45)
             {
                 isCanJump=true;
+                reverseSpeedX = 0;
             }
         }//Ú’n”»’è
-        reverseSpeedX = 0;
+       
     }
     public void OnCollisionExit2D(Collision2D collision)
     {
@@ -283,12 +292,15 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         canvas = GameObject.FindWithTag("Canvas");
+        gameManeger = GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>();
         rb = GetComponent<Rigidbody2D>();
         tf = GetComponent<RectTransform>();
         isRight = true;
         reverseSpeedX = 0;
         reverseCount = 0;
         isDamage = false;
+
+        gameManeger.SendPlayerHp(hp);
     }
 
     // Update is called once per frame
