@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerScript : MonoBehaviour
 {
     public GameObject attack;
+    private GameManagerScript gameManager;
     Rigidbody2D rb;
     RectTransform tf;
     private GameObject canvas;
@@ -231,9 +232,10 @@ public class PlayerScript : MonoBehaviour
             if (dotDeg <= 45)
             {
                 isCanJump=true;
+                reverseSpeedX = 0;
             }
         }//Ú’n”»’è
-        reverseSpeedX = 0;
+       
     }
     public void OnCollisionExit2D(Collision2D collision)
     {
@@ -283,12 +285,14 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         canvas = GameObject.FindWithTag("Canvas");
+        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>();
         rb = GetComponent<Rigidbody2D>();
         tf = GetComponent<RectTransform>();
         isRight = true;
         reverseSpeedX = 0;
         reverseCount = 0;
         isDamage = false;
+        gameManager.SendPlayerHp(hp);
     }
 
     // Update is called once per frame
