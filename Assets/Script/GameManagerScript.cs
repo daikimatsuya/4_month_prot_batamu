@@ -4,19 +4,7 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
-    private int playerHp;
-    private void GameManagerController()
-    {
 
-    }
-    public void SendPlayerHp(int hp)
-    {
-        playerHp = hp;
-    }
-    public int GetPlayerHP()
-    {
-        return playerHp;
-    }
     // Start is called before the first frame update
     void Start()
     {
