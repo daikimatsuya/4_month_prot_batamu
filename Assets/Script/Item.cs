@@ -18,6 +18,10 @@ public class Item : MonoBehaviour
         {
 
         }
+        if (this.tag == "HpItem")
+        {
+            //ƒvƒŒƒCƒ„[‚Åˆ—
+        }
         Destroy(this.gameObject);
     }
     public void OnTriggerEnter2D(Collider2D collision)

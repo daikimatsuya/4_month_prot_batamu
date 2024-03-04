@@ -10,6 +10,8 @@ TagManager:
   - Item
   - Spike
   - GoalItem
+  - GameManager
+  - HpItem
   layers:
   - Default
   - TransparentFX

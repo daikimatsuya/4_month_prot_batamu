@@ -10,6 +10,7 @@ public class GameManagerScript : MonoBehaviour
     {
         playerHp = hp;
     }
+
     public int GetPlayerHp()
     {
         return playerHp;

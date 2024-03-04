@@ -160,6 +160,7 @@ public class PlayerScript : MonoBehaviour
         isDamage = true;
         hp--;
         invincibleCount = (int)(invincibleTime*60);
+        gameManager.SendPlayerHp(hp);
         if (hp <= 0)
         {
 
@@ -275,16 +276,21 @@ public class PlayerScript : MonoBehaviour
           
             
         }
-    }
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Spike")
+        if (collision.gameObject.tag == "Spike")
         {
             if (!isDamage)
             {
-               HitDamage();               
+                HitDamage();
             }
-            
+
+        }
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "HpItem")
+        {
+            hp++;
+            gameManager.SendPlayerHp(hp);
         }
     }
     // Start is called before the first frame update
