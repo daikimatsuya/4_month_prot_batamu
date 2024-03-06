@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    private GameManagerScript gm;
     private void ItemController()
     {
 
@@ -12,11 +13,11 @@ public class Item : MonoBehaviour
     {
         if (this.tag == "Item")
         {
-
+            gm.ItemGet();
         }
         if (this.tag == "GoalItem")
         {
-
+            gm.Goal();
         }
         if (this.tag == "HpItem")
         {
@@ -34,7 +35,7 @@ public class Item : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>();  
     }
 
     // Update is called once per frame
