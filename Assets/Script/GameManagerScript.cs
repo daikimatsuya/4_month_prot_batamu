@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
+    //１ステージ　チュートリアル
+    //２ステージ　反転をうまく使うといいスコアになる
+    //３ステージ　ボーナス　おふざけ　
+    //４ステージ　アクションをうまく使ってクリアする　難度が一番高い
     private int playerHp;
     private int getItem;
     private bool isGoal;
