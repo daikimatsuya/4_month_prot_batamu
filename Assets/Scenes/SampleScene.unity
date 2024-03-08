@@ -1357,7 +1357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4514594430590225551, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
       propertyPath: windPower
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4514594430590225551, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
       propertyPath: maxFallSpeed
