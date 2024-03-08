@@ -289,8 +289,12 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.tag == "HpItem")
         {
-            hp++;
-            gameManager.SendPlayerHp(hp);
+            if (hp < 3)
+            {
+                hp++;
+                gameManager.SendPlayerHp(hp);
+            }
+            
         }
     }
     // Start is called before the first frame update

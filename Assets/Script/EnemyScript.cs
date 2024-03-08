@@ -50,7 +50,15 @@ public class EnemyScript : MonoBehaviour
             float dotDeg = Mathf.Acos(dotUN) * Mathf.Rad2Deg;
             if (dotDeg >= 45)
             {
-                moveSpeed *= -1;
+                if (dotDeg <= 100)
+                {
+                    if (dotDeg >= 45)
+                    {
+                        moveSpeed *= -1;
+                    }
+
+                }
+               
             }
         }
     }
