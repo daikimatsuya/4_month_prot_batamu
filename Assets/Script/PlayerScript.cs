@@ -19,10 +19,12 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float reverseBlake;
     [SerializeField] private float reverseTimeOnStep;
     [SerializeField] private float reverseTimeInAir;
+    [SerializeField] private float reverseTimeOnBalloon;
     [SerializeField] private float attackDistance;
     [SerializeField] private int hp;
     [SerializeField] private float maxFallSpeed;
     [SerializeField] private float invincibleTime;
+
 
     private bool isRight;
     private bool onStep;
@@ -283,6 +285,10 @@ public class PlayerScript : MonoBehaviour
                 HitDamage();
             }
 
+        }
+        if (collision.gameObject.tag == "Balloon")
+        {
+            ReverseCountReset(reverseTimeOnBalloon);
         }
     }
     public void OnTriggerEnter2D(Collider2D collision)

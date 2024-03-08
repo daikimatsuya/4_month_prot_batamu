@@ -12,6 +12,7 @@ TagManager:
   - GoalItem
   - GameManager
   - HpItem
+  - Balloon
   layers:
   - Default
   - TransparentFX
