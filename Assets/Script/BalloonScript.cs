@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BalloonScript : MonoBehaviour
 {
+    [SerializeField] GameObject wind;
+    [SerializeField] private GameObject canvas;
+    [SerializeField] new RectTransform transform;
     private void BalloonController()
     {
 
@@ -14,6 +17,10 @@ public class BalloonScript : MonoBehaviour
     }
     private void Pank()
     {
+        GameObject _ = Instantiate(wind, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        _.transform.SetParent(canvas.transform);
+        _.transform.localScale = new Vector2(1, 1);
+
         Destroy(this.gameObject);
     }
     public void OnCollisionEnter2D(Collision2D collision)
@@ -26,7 +33,8 @@ public class BalloonScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        canvas = GameObject.FindWithTag("Canvas");
+        transform = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame

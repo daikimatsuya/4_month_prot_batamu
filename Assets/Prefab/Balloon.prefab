@@ -128,3 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f0e74355d6dde47a728a2fb09f392d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wind: {fileID: 680241743239616149, guid: 5f97bbd215e50854cbf9eecccfa009e8, type: 3}
+  canvas: {fileID: 0}
+  transform: {fileID: 0}

@@ -24,7 +24,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private int hp;
     [SerializeField] private float maxFallSpeed;
     [SerializeField] private float invincibleTime;
-
+    [SerializeField] private float windPower;
 
     private bool isRight;
     private bool onStep;
@@ -36,6 +36,7 @@ public class PlayerScript : MonoBehaviour
     private int reverseCount;
     private bool isDamage;
     private int invincibleCount;
+    private Vector2 wind;
     
     private void PlayerController()
     {
@@ -75,6 +76,7 @@ public class PlayerScript : MonoBehaviour
             xMoveVector = 0;
         }
         rb.velocity = new Vector2(xMoveVector+reverseSpeedX, rb.velocity.y);
+
 
         if (rb.velocity.y < maxFallSpeed)
         {
@@ -301,6 +303,13 @@ public class PlayerScript : MonoBehaviour
                 gameManager.SendPlayerHp(hp);
             }
             
+        }
+        if(collision.tag == "BalloonWInd")
+        {
+            Vector2 vector = new Vector2((collision.transform.position.x* collision.transform.position.x) - (tf.position.x* tf.position.x), (collision.transform.position.y* collision.transform.position.y) - (tf.position.y* tf.position.y));
+            vector=vector.normalized;
+            wind = new Vector2(rb.velocity.x + (vector.x * windPower), rb.velocity.y + (vector.y * windPower));
+            rb.velocity = new Vector2(rb.velocity.x + wind.x, rb.velocity.y + wind.y);
         }
     }
     // Start is called before the first frame update

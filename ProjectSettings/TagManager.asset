@@ -13,6 +13,7 @@ TagManager:
   - GameManager
   - HpItem
   - Balloon
+  - BalloonWInd
   layers:
   - Default
   - TransparentFX
