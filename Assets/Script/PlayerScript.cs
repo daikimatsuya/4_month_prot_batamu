@@ -342,6 +342,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.tag == "Balloon")
         {
             BounceCollision(collision.transform,1);
+            reverseSpeedX = 0;
         }
     }
     public void OnTriggerEnter2D(Collider2D collision)

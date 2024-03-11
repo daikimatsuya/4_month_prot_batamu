@@ -156,4 +156,4 @@ MonoBehaviour:
   bouncePowerY: 4
   maxBounce: 0
   bounceBlake: 1
-  pankStrength: 3
+  pankStrength: 2

@@ -1360,10 +1360,6 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4514594430590225551, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
-      propertyPath: pankStrength
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4514594430590225551, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
       propertyPath: reversePower
       value: 20
       objectReference: {fileID: 0}
@@ -1576,10 +1572,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1164636553}
     m_Modifications:
-    - target: {fileID: 1814236613031749131, guid: 07ad10652957ec44685af037d0944102, type: 3}
-      propertyPath: m_Mass
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 5649534589192098382, guid: 07ad10652957ec44685af037d0944102, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
