@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -29,7 +30,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float maxBounce;
     [SerializeField] private float bounceBlake;
     [SerializeField] private float pankStrength;
-
+    [SerializeField] private Sprite open;
+    [SerializeField] private Sprite normal;
+    
     private bool isRight;
     private bool onStep;
     private bool isCanJump;
@@ -42,7 +45,8 @@ public class PlayerScript : MonoBehaviour
     private int invincibleCount;
     private Vector2 bounce;
     private bool isOpen;
-    
+    public UnityEngine.UI.Image image;
+
     private void PlayerController()
     {
         Open();
@@ -243,6 +247,7 @@ public class PlayerScript : MonoBehaviour
     {
         if(isOpen)
         {
+            image.sprite = open;
             if (isRight)
             {
                 tf.transform.eulerAngles = new Vector3(0, 0, 0);
@@ -254,6 +259,7 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
+            image.sprite = normal;
             if (isRight)
             {
                 tf.transform.eulerAngles = new Vector3(0, 0, 0);
@@ -411,6 +417,7 @@ public class PlayerScript : MonoBehaviour
     {
         canvas = GameObject.FindWithTag("Canvas");
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>();
+        image= GetComponent<UnityEngine.UI.Image>();    
         rb = GetComponent<Rigidbody2D>();
         tf = GetComponent<RectTransform>();
         isRight = true;
