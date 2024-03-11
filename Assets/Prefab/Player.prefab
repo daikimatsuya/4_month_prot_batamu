@@ -147,7 +147,13 @@ MonoBehaviour:
   reverseBlake: 0
   reverseTimeOnStep: 0.09
   reverseTimeInAir: 0.4
+  reverseTimeOnBalloon: 0.1
   attackDistance: 0.5
   hp: 3
-  maxFallSpeed: 0
+  maxFallSpeed: -20
   invincibleTime: 0.5
+  bouncePowerX: 20
+  bouncePowerY: 4
+  maxBounce: 0
+  bounceBlake: 1
+  pankStrength: 3

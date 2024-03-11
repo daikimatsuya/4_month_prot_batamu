@@ -24,7 +24,11 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private int hp;
     [SerializeField] private float maxFallSpeed;
     [SerializeField] private float invincibleTime;
-    [SerializeField] private float windPower;
+    [SerializeField] private float bouncePowerX;
+    [SerializeField] private float bouncePowerY;
+    [SerializeField] private float maxBounce;
+    [SerializeField] private float bounceBlake;
+    [SerializeField] private float pankStrength;
 
     private bool isRight;
     private bool onStep;
@@ -36,7 +40,7 @@ public class PlayerScript : MonoBehaviour
     private int reverseCount;
     private bool isDamage;
     private int invincibleCount;
-    private Vector2 wind;
+    private Vector2 bounce;
     
     private void PlayerController()
     {
@@ -76,6 +80,11 @@ public class PlayerScript : MonoBehaviour
             xMoveVector = 0;
         }
         rb.velocity = new Vector2(xMoveVector+reverseSpeedX, rb.velocity.y);
+        rb.velocity = new Vector2(rb.velocity.x + bounce.x, rb.velocity.y + bounce.y);
+        if (bounce.y != 0||bounce.x!=0)
+        {
+            BounceBlake();
+        }
 
 
         if (rb.velocity.y < maxFallSpeed)
@@ -228,6 +237,48 @@ public class PlayerScript : MonoBehaviour
         }
 
     }
+    private void BounceCollision(Transform collision,float strength)
+    {
+        Vector2 vector = new Vector2((collision.position.x * collision.position.x) - (tf.position.x * tf.position.x), (collision.position.y * collision.position.y) - (tf.position.y * tf.position.y));
+        vector = vector.normalized;
+        bounce = new Vector2((vector.x * (bouncePowerX*strength)), (vector.y * (bouncePowerY*strength)));
+    }
+    private void BounceBlake()
+    {
+        if(bounce.x > 0)
+        {
+            bounce.x-=bounceBlake;
+            if(bounce.x < 0)
+            {
+                bounce.x = 0;
+            }
+        }
+        else if (bounce.x < 0)
+        {
+            bounce.x += bounceBlake;
+            if (bounce.x > 0)
+            {
+                bounce.x = 0;
+            }
+        }
+        if(bounce.y > 0)
+        {
+            bounce.y-=bounceBlake;
+            if(bounce.y < 0)
+            {
+                bounce.y = 0;
+            }
+        }
+        else if(bounce.y < 0)
+        {
+            bounce.y += bounceBlake;
+            if(bounce.y > 0)
+            {
+                bounce.y = 0;
+            }
+        }
+    }
+
     public float GetAttackFreezeTime()
     {
         return reverseTimeOnStep;
@@ -290,7 +341,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (collision.gameObject.tag == "Balloon")
         {
-            ReverseCountReset(reverseTimeOnBalloon);
+            BounceCollision(collision.transform,1);
         }
     }
     public void OnTriggerEnter2D(Collider2D collision)
@@ -306,12 +357,10 @@ public class PlayerScript : MonoBehaviour
         }
         if(collision.tag == "BalloonWInd")
         {
-            Vector2 vector = new Vector2((collision.transform.position.x* collision.transform.position.x) - (tf.position.x* tf.position.x), (collision.transform.position.y* collision.transform.position.y) - (tf.position.y* tf.position.y));
-            vector=vector.normalized;
-            wind = new Vector2(rb.velocity.x + (vector.x * windPower), rb.velocity.y + (vector.y * windPower));
-            rb.velocity = new Vector2(rb.velocity.x + wind.x, rb.velocity.y + wind.y);
+            BounceCollision(collision.transform,pankStrength);
         }
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -324,6 +373,7 @@ public class PlayerScript : MonoBehaviour
         reverseCount = 0;
         isDamage = false;
         gameManager.SendPlayerHp(hp);
+        bounce = Vector2.zero;
     }
 
     // Update is called once per frame

@@ -1360,16 +1360,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4514594430590225551, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
-      propertyPath: maxFallSpeed
-      value: -20
+      propertyPath: pankStrength
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4514594430590225551, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
       propertyPath: reversePower
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4514594430590225551, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
-      propertyPath: reverseTimeOnBalloon
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68784a000c0dbf444ba24cf7052d479d, type: 3}
@@ -1654,7 +1650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5649534589192098382, guid: 07ad10652957ec44685af037d0944102, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -65
+      value: -125
       objectReference: {fileID: 0}
     - target: {fileID: 5649534589192098382, guid: 07ad10652957ec44685af037d0944102, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
