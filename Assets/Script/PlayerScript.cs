@@ -41,9 +41,11 @@ public class PlayerScript : MonoBehaviour
     private bool isDamage;
     private int invincibleCount;
     private Vector2 bounce;
+    private bool isOpen;
     
     private void PlayerController()
     {
+        Open();
         Jump();
         Move();
         ImageChange();
@@ -56,7 +58,7 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.D)||Input.GetKey(KeyCode.RightArrow))
         {          
             xMoveVector += xMovePower;
-            if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
+            if (!isOpen)
             {
                 if (!isRight)
                 {
@@ -67,13 +69,17 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.LeftArrow))
         {            
             xMoveVector += -xMovePower;
-            if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
+            if (!isOpen)
             {
                 if (isRight)
                 {
                     Reverse();
                 }
             }
+        }
+        if (isOpen)
+        {
+            xMoveVector /= 2.0f;
         }
         if(reverseCount>0)
         {
@@ -104,6 +110,14 @@ public class PlayerScript : MonoBehaviour
             
         }
         }
+    private void Open()
+    {
+        isOpen = false;
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)||Input.GetKey(KeyCode.LeftShift))
+        {
+            isOpen = true;
+        }
+    }
     private void Reverse()
     {
         if (reverseCount <= 0)
@@ -227,14 +241,29 @@ public class PlayerScript : MonoBehaviour
     }
     private void ImageChange()
     {
-        if(isRight)
+        if(isOpen)
         {
-            tf.transform.eulerAngles = new Vector3(0, 0,0);
+            if (isRight)
+            {
+                tf.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                tf.transform.eulerAngles = new Vector3(0, 180, 0);
+            }
         }
         else
         {
-            tf.transform.eulerAngles = new Vector3(0, 180, 0); 
+            if (isRight)
+            {
+                tf.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                tf.transform.eulerAngles = new Vector3(0, 180, 0);
+            }
         }
+      
 
     }
     private void BounceCollision(Transform collision,float strength)
@@ -247,7 +276,15 @@ public class PlayerScript : MonoBehaviour
     {
         if(bounce.x > 0)
         {
-            bounce.x-=bounceBlake;
+            if(isOpen)
+            {
+                bounce.x -= bounceBlake*4;
+            }
+            else
+            {
+                 bounce.x-=bounceBlake;
+            }
+           
             if(bounce.x < 0)
             {
                 bounce.x = 0;
@@ -255,7 +292,14 @@ public class PlayerScript : MonoBehaviour
         }
         else if (bounce.x < 0)
         {
-            bounce.x += bounceBlake;
+            if (isOpen)
+            {
+                bounce.x += bounceBlake * 4;
+            }
+            else
+            {
+                bounce.x += bounceBlake;
+            }
             if (bounce.x > 0)
             {
                 bounce.x = 0;
