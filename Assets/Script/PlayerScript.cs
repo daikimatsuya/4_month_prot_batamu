@@ -239,7 +239,7 @@ public class PlayerScript : MonoBehaviour
     }
     private void BounceCollision(Transform collision,float strength)
     {
-        Vector2 vector = new Vector2((collision.position.x * collision.position.x) - (tf.position.x * tf.position.x), (collision.position.y * collision.position.y) - (tf.position.y * tf.position.y));
+        Vector2 vector = new Vector2(-(collision.position.x- tf.position.x), -(collision.position.y - tf.position.y));
         vector = vector.normalized;
         bounce = new Vector2((vector.x * (bouncePowerX*strength)), (vector.y * (bouncePowerY*strength)));
     }
