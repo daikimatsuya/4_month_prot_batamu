@@ -24,6 +24,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float attackDistance;
     [SerializeField] private int hp;
     [SerializeField] private float maxFallSpeed;
+    [SerializeField] private float maxMoveSpeedX;
+    [SerializeField] private float maxMoveSpeedY;
     [SerializeField] private float invincibleTime;
     [SerializeField] private float bouncePowerX;
     [SerializeField] private float bouncePowerY;
@@ -55,6 +57,7 @@ public class PlayerScript : MonoBehaviour
         ImageChange();
         ReverseCountDown();
         InvincibleCountDown();
+        SpeedSave();
     }
     private void Move()
     {
@@ -90,6 +93,7 @@ public class PlayerScript : MonoBehaviour
             xMoveVector = 0;
         }
         rb.velocity = new Vector2(xMoveVector+reverseSpeedX, rb.velocity.y);
+       
         rb.velocity = new Vector2(rb.velocity.x + bounce.x, rb.velocity.y + bounce.y);
         if (bounce.y != 0||bounce.x!=0)
         {
@@ -100,6 +104,25 @@ public class PlayerScript : MonoBehaviour
         if (rb.velocity.y < maxFallSpeed)
         {
             rb.velocity = new Vector2(rb.velocity.x, maxFallSpeed);
+        }
+    }
+    private void SpeedSave()
+    {
+        if (rb.velocity.x > maxMoveSpeedX)
+        {
+            rb.velocity = new Vector2(maxMoveSpeedX, rb.velocity.y);
+        }
+        if (rb.velocity.x < -maxMoveSpeedX)
+        {
+            rb.velocity = new Vector2(-maxMoveSpeedX, rb.velocity.y);
+        }
+        if (rb.velocity.y > maxMoveSpeedY)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, maxMoveSpeedY);
+        }
+        if (rb.velocity.y < -maxMoveSpeedY)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, -maxMoveSpeedY);
         }
     }
     private void Jump()
@@ -391,6 +414,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (collision.gameObject.tag == "Balloon")
         {
+            rb.velocity= Vector2.zero;  
             BounceCollision(collision.transform,1);
             reverseSpeedX = 0;
         }
@@ -408,6 +432,7 @@ public class PlayerScript : MonoBehaviour
         }
         if(collision.tag == "BalloonWInd")
         {
+            rb.velocity = Vector2.zero;
             BounceCollision(collision.transform,pankStrength);
         }
     }

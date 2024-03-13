@@ -2399,8 +2399,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 9198589244823143548, guid: 9f300eb65ee0ddc49b29f3f7259f913f, type: 3}
-      propertyPath: bouncePowerY
-      value: 2
+      propertyPath: maxMoveSpeed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9198589245304180841, guid: 9f300eb65ee0ddc49b29f3f7259f913f, type: 3}
       propertyPath: m_AnchoredPosition.y
