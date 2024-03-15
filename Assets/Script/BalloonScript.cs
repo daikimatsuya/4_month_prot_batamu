@@ -58,6 +58,7 @@ public class BalloonScript : MonoBehaviour
         transform = GetComponent<RectTransform>();
         rb=GetComponent<Rigidbody2D>();
         isPank = false;
+
     }
 
     // Update is called once per frame
