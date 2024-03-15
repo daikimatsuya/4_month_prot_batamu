@@ -7,7 +7,9 @@ public class BalloonScript : MonoBehaviour
     [SerializeField] GameObject wind;
     [SerializeField] private GameObject canvas;
     [SerializeField] new RectTransform transform;
+    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private bool isPank;
+    [SerializeField] private float pankPower;
     private void BalloonController()
     {
         Pank();
@@ -42,12 +44,19 @@ public class BalloonScript : MonoBehaviour
         {
             isPank = true;
         }
+        if(collision.gameObject.tag == "BalloonWInd")
+        {
+            Vector2 vector = new Vector2(-(collision.transform.position.x - this.gameObject.transform.position.x), -(collision.transform.position.y - this.gameObject.transform.position.y));
+            vector = vector.normalized;
+            rb.velocity = new Vector2(vector.x * pankPower, vector.y * pankPower);
+        }
     }
     // Start is called before the first frame update
     void Start()
     {
         canvas = GameObject.FindWithTag("Canvas");
         transform = GetComponent<RectTransform>();
+        rb=GetComponent<Rigidbody2D>();
         isPank = false;
     }
 

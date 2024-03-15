@@ -131,3 +131,6 @@ MonoBehaviour:
   wind: {fileID: 680241743239616149, guid: 5f97bbd215e50854cbf9eecccfa009e8, type: 3}
   canvas: {fileID: 0}
   transform: {fileID: 0}
+  rb: {fileID: 0}
+  isPank: 0
+  pankPower: 2
