@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
-    //１ステージ　チュートリアル
+    //　ステージのコンセプト
+    //１ステージ　チュートリアル　移動と反転
     //２ステージ　反転をうまく使うといいスコアになる
-    //３ステージ　風船紹介
-    //４ステージ　アクションをうまく使ってクリアする　難度が一番高い
+    //３ステージ　チュートリアル　風船
+    //４ステージ　風船をうまく使うとショートカットできる
+    //５ステージ　
 
     [SerializeField] string stage1;
     [SerializeField] string stage2;
