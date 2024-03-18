@@ -10,7 +10,7 @@ public class GameManagerScript : MonoBehaviour
     //２ステージ　反転をうまく使うといいスコアになる
     //３ステージ　チュートリアル　風船
     //４ステージ　風船をうまく使うとショートカットできる
-    //５ステージ　
+    //５ステージ　１～４までの要素でアスレチック
 
     [SerializeField] string stage1;
     [SerializeField] string stage2;
