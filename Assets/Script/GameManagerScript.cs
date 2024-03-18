@@ -14,6 +14,7 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField] string stage2;
     [SerializeField] string stage3;
     [SerializeField] string stage4;
+    [SerializeField] string stage5;
 
     private int playerHp;
     private int getItem;
@@ -41,6 +42,10 @@ public class GameManagerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             SceneManager.LoadScene(stage4);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            SceneManager.LoadScene(stage5);
         }
 
     }
