@@ -34,6 +34,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float pankStrength;
     [SerializeField] private Sprite open;
     [SerializeField] private Sprite normal;
+    [SerializeField] private float cutFallSpeed;
     
     private bool isRight;
     private bool onStep;
@@ -86,7 +87,11 @@ public class PlayerScript : MonoBehaviour
         }
         if (isOpen)
         {
-            xMoveVector /= 2.0f;
+            xMoveVector /= 1.25f;
+            if(-maxMoveSpeedY/cutFallSpeed > rb.velocity.y)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, -maxMoveSpeedY/cutFallSpeed);
+            }
         }
         if(reverseCount>0)
         {
