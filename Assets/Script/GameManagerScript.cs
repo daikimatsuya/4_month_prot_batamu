@@ -17,6 +17,12 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField] string stage3;
     [SerializeField] string stage4;
     [SerializeField] string stage5;
+    [SerializeField] string stage6;
+    [SerializeField] string stage7;
+    [SerializeField] string stage8;
+    [SerializeField] string stage9;
+    [SerializeField] string stage10;
+    
 
     private int playerHp;
     private int getItem;
@@ -49,7 +55,26 @@ public class GameManagerScript : MonoBehaviour
         {
             SceneManager.LoadScene(stage5);
         }
-
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            SceneManager.LoadScene(stage6);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            SceneManager.LoadScene(stage7);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            SceneManager.LoadScene(stage8);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            SceneManager.LoadScene(stage9);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            SceneManager.LoadScene(stage10);
+        }
     }
     public void SendPlayerHp(int hp)
     {
