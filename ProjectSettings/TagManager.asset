@@ -15,6 +15,7 @@ TagManager:
   - Balloon
   - BalloonWInd
   - DeathBlock
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

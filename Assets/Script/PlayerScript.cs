@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class PlayerScript : MonoBehaviour
 {
     public GameObject attack;
+    [SerializeField] private GameObject bullet;
     private GameManagerScript gameManager;
     Rigidbody2D rb;
     RectTransform tf;
@@ -35,6 +36,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Sprite open;
     [SerializeField] private Sprite normal;
     [SerializeField] private float cutFallSpeed;
+    [SerializeField] private float bulletCoolTime;
     
     private bool isRight;
     private bool onStep;
@@ -49,9 +51,11 @@ public class PlayerScript : MonoBehaviour
     private Vector2 bounce;
     private bool isOpen;
     public UnityEngine.UI.Image image;
+    private float bulletCooltime;
 
     private void PlayerController()
     {
+        bulletCooltime--;
         Open();
         Jump();
         Move();
@@ -160,6 +164,7 @@ public class PlayerScript : MonoBehaviour
                 if (isRight)
                 {
                     Attack();
+                    Bullet();
                     ReverseCountReset(reverseTimeOnStep);
                     isRight = false;
                 }
@@ -167,6 +172,7 @@ public class PlayerScript : MonoBehaviour
                 else
                 {
                     Attack();
+                    Bullet();
                     ReverseCountReset(reverseTimeOnStep);
                     isRight = true;
                 }
@@ -177,6 +183,7 @@ public class PlayerScript : MonoBehaviour
                 if (isRight)
                 {
                     Attack();
+                  
                     ReverseReaction(-1);
                     ReverseCountReset(reverseTimeInAir);
                     isRight = false;
@@ -213,6 +220,25 @@ public class PlayerScript : MonoBehaviour
             _.transform.localScale = new Vector2(1, 1);
         }
 
+    }
+    private void Bullet()
+    {
+        if(bulletCooltime<=0)
+        {
+            bulletCooltime = bulletCoolTime * 60;
+            GameObject _ = Instantiate(bullet, new Vector3(tf.position.x, tf.position.y, tf.position.z), Quaternion.identity);
+            _.transform.SetParent(canvas.transform);
+            _.transform.localScale = new Vector2(0.5f, 0.5f);
+            if (isRight)
+            {
+                _.transform.localEulerAngles = new Vector2(0, 0);
+            }
+            else
+            {
+                _.transform.localEulerAngles = new Vector2(0, 180);
+            }
+        }
+ 
     }
     private void HitDamage()
     {

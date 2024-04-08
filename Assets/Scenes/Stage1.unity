@@ -2057,6 +2057,10 @@ PrefabInstance:
       propertyPath: attackDistance
       value: 0.9
       objectReference: {fileID: 0}
+    - target: {fileID: 9198589244823143548, guid: 9f300eb65ee0ddc49b29f3f7259f913f, type: 3}
+      propertyPath: bulletCoolTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9198589244823143551, guid: 9f300eb65ee0ddc49b29f3f7259f913f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -576
