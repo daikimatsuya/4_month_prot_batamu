@@ -4254,11 +4254,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9198589244823143551, guid: 9f300eb65ee0ddc49b29f3f7259f913f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4246
+      value: 327
       objectReference: {fileID: 0}
     - target: {fileID: 9198589244823143551, guid: 9f300eb65ee0ddc49b29f3f7259f913f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -121
+      value: -147
       objectReference: {fileID: 0}
     - target: {fileID: 9198589245540765744, guid: 9f300eb65ee0ddc49b29f3f7259f913f, type: 3}
       propertyPath: m_RootOrder

@@ -435,6 +435,11 @@ public class PlayerScript : MonoBehaviour
             }
             
         }
+        if (collision.tag == "DeathBlock")
+        {
+            hp -= 999999999;
+            HitDamage();
+        }
         if(collision.tag == "BalloonWInd")
         {
             rb.velocity = Vector2.zero;
