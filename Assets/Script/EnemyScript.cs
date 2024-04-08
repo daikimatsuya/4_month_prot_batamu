@@ -25,7 +25,6 @@ public class EnemyScript : MonoBehaviour
             rb.velocity = new Vector3(moveSpeed, rb.velocity.y, 0);
         }
     }
-
    
     private void HitDamage()
     {
@@ -67,6 +66,11 @@ public class EnemyScript : MonoBehaviour
     {
         if (collision.tag == "PlayerAttack")
         {
+           // HitDamage();
+        }
+        if(collision.tag == "DeathBlock")
+        {
+            hp -= 999999999;
             HitDamage();
         }
     }
