@@ -68,6 +68,10 @@ public class EnemyScript : MonoBehaviour
         {
            // HitDamage();
         }
+        if(collision.tag == "PlayerBullet")
+        {
+            HitDamage();
+        }
         if(collision.tag == "DeathBlock")
         {
             hp -= 999999999;

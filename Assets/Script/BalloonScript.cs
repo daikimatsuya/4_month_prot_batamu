@@ -44,6 +44,14 @@ public class BalloonScript : MonoBehaviour
         {
             isPank = true;
         }
+        if(collision.gameObject.tag == "PlayerBullet")
+        {
+            isPank = true;
+        }
+        if (collision.gameObject.tag == "DeathBlock")
+        {
+            isPank = true;
+        }
         if(collision.gameObject.tag == "BalloonWInd")
         {
             Vector2 vector = new Vector2(-(collision.transform.position.x - this.gameObject.transform.position.x), -(collision.transform.position.y - this.gameObject.transform.position.y));
