@@ -34,6 +34,19 @@ public class PlayerBullet : MonoBehaviour
     {
         return angle * Math.PI / 180f;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "PlayerAttack")
+        {
+            return;
+        }
+        if (collision.tag == "Player")
+        {
+            return;
+        }
+        Destroy (this.gameObject);
+    }
     // Start is called before the first frame update
     void Start()
     {

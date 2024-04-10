@@ -10,6 +10,10 @@ public class BrokenBlock : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        if(collision.tag == "PlayerBullet")
+        {
+            Destroy(this.gameObject);
+        }
     }
     // Start is called before the first frame update
     void Start()

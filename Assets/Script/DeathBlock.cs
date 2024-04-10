@@ -8,7 +8,8 @@ public class DeathBlock : MonoBehaviour
     [SerializeField] bool isMoveRight;
     [SerializeField] bool isMoveUp;
     [SerializeField] bool isMoveDown;
-    [SerializeField] float moveSpeed;
+    [SerializeField] Vector2 moveSpeed;
+
 
     private Rigidbody2D rb;
     private Vector2 move;
@@ -26,19 +27,19 @@ public class DeathBlock : MonoBehaviour
         
         if (isMoveDown)
         {
-            move.y = -moveSpeed;
+            move.y = -moveSpeed.y;
         }
         if(isMoveLeft)
         {
-            move.x = -moveSpeed;
+            move.x = -moveSpeed.x;
         }
         if(isMoveRight)
         {
-            move.x = moveSpeed;
+            move.x = moveSpeed.x;
         }
         if (isMoveUp)
         {
-            move.y = moveSpeed;
+            move.y = moveSpeed.y;
         }
 
         rb.velocity = move;

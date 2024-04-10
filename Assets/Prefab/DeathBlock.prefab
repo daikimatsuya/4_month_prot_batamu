@@ -142,4 +142,4 @@ MonoBehaviour:
   isMoveRight: 0
   isMoveUp: 0
   isMoveDown: 0
-  moveSpeed: 5
+  moveSpeed: {x: 5, y: 0.5}
