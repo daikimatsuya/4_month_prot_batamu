@@ -80,3 +80,7 @@ crashlytics-build.properties
 /Assets/Fonts/Makinas-4-Flat.otf.meta
 /Assets/Fonts/Makinas-4-Square SDF.asset
 /Assets/Fonts/Makinas-4-Square SDF.asset.meta
+/Assets/Scenes/Stage1.unity
+/Assets/Scenes/Stage3.unity
+/Assets/TextMesh Pro/Fonts/LiberationSans.ttf.meta
+/Assets/Prefab/GameManagerObject.prefab
