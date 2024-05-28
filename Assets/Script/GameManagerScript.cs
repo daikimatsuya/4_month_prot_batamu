@@ -22,7 +22,9 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField] string stage8;
     [SerializeField] string stage9;
     [SerializeField] string stage10;
-    
+
+    [SerializeField] float time;
+    [SerializeField] int increaseTime;
 
     private int playerHp;
     private int getItem;
@@ -32,6 +34,7 @@ public class GameManagerScript : MonoBehaviour
     private void GameController()
     {
         ChangeStage();
+        CountDown();
     }
     private void ChangeStage()
     {
@@ -76,6 +79,17 @@ public class GameManagerScript : MonoBehaviour
             SceneManager.LoadScene(stage10);
         }
     }
+    private void CountDown()
+    {
+        if(!isGoal)
+        {
+            time--;
+        }        
+    }
+    public void IncreaseTime()
+    {
+        time += increaseTime;
+    }
     public void SendPlayerHp(int hp)
     {
         playerHp = hp;
@@ -103,12 +117,17 @@ public class GameManagerScript : MonoBehaviour
     {
         return playerHp;
     }
+    public int GetTime()
+    {
+        return (int)time;
+    }
     // Start is called before the first frame update
     void Start()
     {
         Application.targetFrameRate = 60;
         Screen.SetResolution(1920, 1080, false);
         isGoal = false;
+        time = time * 60;
     }
 
     // Update is called once per frame
