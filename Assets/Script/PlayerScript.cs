@@ -478,6 +478,13 @@ public class PlayerScript : MonoBehaviour
                 HitDamage();
             }
         }
+        if (collision.tag == "HomingEnemy")
+        {
+            if (!isDamage)
+            {
+                HitDamage();
+            }
+        }
     }
 
     // Start is called before the first frame update
