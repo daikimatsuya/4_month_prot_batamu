@@ -603,7 +603,7 @@ RectTransform:
   m_Children:
   - {fileID: 9198589245304180841}
   m_Father: {fileID: 9198589245960663711}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -639,7 +639,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9198589245960663711}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -810,7 +810,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9198589245960663711}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -974,7 +974,7 @@ MonoBehaviour:
   stage8: Stage8
   stage9: Stage9
   stage10: Stage10
-  time: 60
+  time: 90
   increaseTime: 30
 --- !u!1 &9198589245960663710
 GameObject:
@@ -1008,9 +1008,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9198589244823143551}
-  - {fileID: 1911973665428604734}
   - {fileID: 8356428036748937826}
   - {fileID: 5693853824403618253}
+  - {fileID: 1911973665428604734}
   m_Father: {fileID: 9198589245540765744}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

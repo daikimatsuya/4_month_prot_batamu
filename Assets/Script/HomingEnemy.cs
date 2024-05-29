@@ -14,6 +14,7 @@ public class HomingEnemy : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float homingLeng;
     [SerializeField] private float MaxLeng;
+    [SerializeField] private bool isReach;
 
     private void HomingEnemyController()
     {
@@ -27,14 +28,21 @@ public class HomingEnemy : MonoBehaviour
         if (disLeng > homingLeng)
         {
             if(disLeng > MaxLeng)
-            {
-                dis = math.normalize(dis);
-                rb.velocity = new Vector2(dis.x * maxSpeed, dis.y * maxSpeed);
+            {                
+                if(isReach)
+                {
+                    dis = math.normalize(dis);
+                    rb.velocity = new Vector2(dis.x * maxSpeed, dis.y * maxSpeed);
+                }               
             }
             else
             {
-                dis = math.normalize(dis);
-                rb.velocity = new Vector2(dis.x * speed, dis.y * speed);
+                isReach = true;
+                if (isReach)
+                {
+                    dis = math.normalize(dis);
+                    rb.velocity = new Vector2(dis.x * speed, dis.y * speed);
+                }
             }      
         }
     }
