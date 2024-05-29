@@ -17,6 +17,8 @@ TagManager:
   - DeathBlock
   - PlayerBullet
   - UICanvas
+  - GimmickEnemy
+  - HomingEnemy
   layers:
   - Default
   - TransparentFX

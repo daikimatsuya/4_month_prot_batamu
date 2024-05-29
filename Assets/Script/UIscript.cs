@@ -9,17 +9,22 @@ public class UIscript : MonoBehaviour
     [SerializeField] private TMP_Text hpViewer;
     [SerializeField] private TMP_Text getItem;
     [SerializeField] private TMP_Text goal;
+    [SerializeField] private TMP_Text time;
     private int itemCount;
     private int playerHp;
+    private int leftTime;
 
     private void UICanvasController()
     {
         playerHp = gameManager.GetPlayerHp();
         itemCount = gameManager.GetItem();
+        leftTime=gameManager.GetTime();
+
 
         ViewItemCount();
         ViewPlayerHp();
         ViewIsGoal();
+        ViewTime();
     }
     private void ViewPlayerHp()
     {
@@ -36,6 +41,10 @@ public class UIscript : MonoBehaviour
             goal.SetText("GOAL");
         }
 
+    }
+    private void ViewTime()
+    {
+        time.SetText("time:{0}", leftTime/60);
     }
 
     // Start is called before the first frame update

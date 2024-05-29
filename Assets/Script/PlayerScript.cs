@@ -471,6 +471,20 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = Vector2.zero;
             BounceCollision(collision.transform,pankStrength);
         }
+        if( collision.tag == "GimmickEnemy")
+        {
+            if(!isDamage)
+            {
+                HitDamage();
+            }
+        }
+        if (collision.tag == "HomingEnemy")
+        {
+            if (!isDamage)
+            {
+                HitDamage();
+            }
+        }
     }
 
     // Start is called before the first frame update
